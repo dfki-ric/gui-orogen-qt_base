@@ -6,10 +6,14 @@ ADD_LIBRARY(${QT_BASE_TASKLIB_NAME} SHARED
 add_dependencies(${QT_BASE_TASKLIB_NAME}
     regen-typekit)
 
-find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
+find_package(Rock REQUIRED)
+rock_find_qt5(Core Gui Widgets UiTools)
 target_link_libraries(${QT_BASE_TASKLIB_NAME} PUBLIC
     ${OrocosRTT_LIBRARIES}
-    Qt5::Core Qt5::Widgets
+    Qt5::Core
+    Qt5::Gui
+    Qt5::Widgets
+    Qt5::UiTools
     ${QT_BASE_TASKLIB_DEPENDENT_LIBRARIES})
 set(CMAKE_AUTOMOC true)
 
